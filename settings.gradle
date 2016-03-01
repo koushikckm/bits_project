@@ -1,0 +1,5 @@
+rootProject.name = 'bits'
+include 'api'
+include 'common'
+include 'mysql'
+

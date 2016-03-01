@@ -1,0 +1,23 @@
+auditdb:
+  image: mysql
+  environment:
+    - MYSQL_ROOT_PASSWORD=Kou@9916591569
+    - MYSQL_DATABASE=operations
+    - MYSQL_USER=bits
+    - MYSQL_PASSWORD=Kou@9916591569
+  volumes:
+    - mysql:/var/lib/mysql
+  ports:
+    - "3306:3306"
+web:
+  build: ./api
+  environment:
+    - SPRING_PROFILES_ACTIVE=local
+  ports:
+    - "8080:8080"
+  links:
+    - auditdb:operations
+  volumes:
+    - .logs:/usr/local/tomcat/logs
+    - .logs/bits:/tmp/logs/
+
